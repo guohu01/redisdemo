@@ -1,0 +1,793 @@
+2021-02-24 10:23:10,476 DEBUG {conn-10001,procId-8} connected
+2021-02-24 10:23:10,527 DEBUG {conn-10002,procId-9} connected
+2021-02-24 10:23:10,555 DEBUG {conn-10003,procId-10} connected
+2021-02-24 10:23:10,575 DEBUG {conn-10004,procId-11} connected
+2021-02-24 10:23:10,592 DEBUG {conn-10005,procId-12} connected
+2021-02-24 10:23:10,597 DEBUG {conn-10005} pool-connect
+2021-02-24 10:23:11,453 DEBUG {conn-10005, pstmt-20000} created. select * from t_users u where u.username=?
+2021-02-24 10:23:11,473 DEBUG {conn-10005, pstmt-20000} Parameters : [admin]
+2021-02-24 10:23:11,473 DEBUG {conn-10005, pstmt-20000} Types : [VARCHAR]
+2021-02-24 10:23:11,582 DEBUG {conn-10005, pstmt-20000} executed. 112.384816 millis. select * from t_users u where u.username=?
+2021-02-24 10:23:11,588 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-02-24 10:23:11,590 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-02-24 10:23:11,615 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:23:11,619 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-02-24 10:23:11,621 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:23:11,623 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:23:12,965 DEBUG {conn-10005} pool-connect
+2021-02-24 10:23:12,970 DEBUG {conn-10005, pstmt-20001} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=? or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=?))
+        order by p.create_time desc
+2021-02-24 10:23:12,972 DEBUG {conn-10005, pstmt-20001} Parameters : [3, 3]
+2021-02-24 10:23:12,972 DEBUG {conn-10005, pstmt-20001} Types : [INTEGER, INTEGER]
+2021-02-24 10:23:13,005 DEBUG {conn-10005, pstmt-20001} executed. 33.156197 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=? or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=?))
+        order by p.create_time desc
+2021-02-24 10:23:13,005 DEBUG {conn-10005, pstmt-20001, rs-50001} open
+2021-02-24 10:23:13,005 DEBUG {conn-10005, pstmt-20001, rs-50001} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:23:13,005 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:23:13,009 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:23:13,010 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:23:13,010 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:23:13,011 DEBUG {conn-10005, pstmt-20001, rs-50001} closed
+2021-02-24 10:23:13,011 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:23:13,011 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:23:13,036 DEBUG {conn-10005} pool-connect
+2021-02-24 10:23:13,037 DEBUG {conn-10005, pstmt-20002} created. select count(user_id) from t_users_focus where focus_user_id=?
+2021-02-24 10:23:13,038 DEBUG {conn-10005, pstmt-20002} Parameters : [3]
+2021-02-24 10:23:13,038 DEBUG {conn-10005, pstmt-20002} Types : [INTEGER]
+2021-02-24 10:23:13,039 DEBUG {conn-10005, pstmt-20002} executed. 1.652695 millis. select count(user_id) from t_users_focus where focus_user_id=?
+2021-02-24 10:23:13,039 DEBUG {conn-10005, pstmt-20002, rs-50002} open
+2021-02-24 10:23:13,039 DEBUG {conn-10005, pstmt-20002, rs-50002} Header: [count(user_id)]
+2021-02-24 10:23:13,040 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [2]
+2021-02-24 10:23:13,040 DEBUG {conn-10005, pstmt-20002, rs-50002} closed
+2021-02-24 10:23:13,040 DEBUG {conn-10005, pstmt-20002} clearParameters. 
+2021-02-24 10:23:13,040 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:23:13,042 DEBUG {conn-10005} pool-connect
+2021-02-24 10:23:13,043 DEBUG {conn-10005, pstmt-20003} created. select count(user_id) from t_users_focus where user_id=?
+2021-02-24 10:23:13,043 DEBUG {conn-10005, pstmt-20003} Parameters : [3]
+2021-02-24 10:23:13,043 DEBUG {conn-10005, pstmt-20003} Types : [INTEGER]
+2021-02-24 10:23:13,044 DEBUG {conn-10005, pstmt-20003} executed. 1.014452 millis. select count(user_id) from t_users_focus where user_id=?
+2021-02-24 10:23:13,044 DEBUG {conn-10005, pstmt-20003, rs-50003} open
+2021-02-24 10:23:13,044 DEBUG {conn-10005, pstmt-20003, rs-50003} Header: [count(user_id)]
+2021-02-24 10:23:13,045 DEBUG {conn-10005, pstmt-20003, rs-50003} Result: [1]
+2021-02-24 10:23:13,045 DEBUG {conn-10005, pstmt-20003, rs-50003} closed
+2021-02-24 10:23:13,045 DEBUG {conn-10005, pstmt-20003} clearParameters. 
+2021-02-24 10:23:13,045 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:23:57,195 DEBUG {conn-10005} pool-connect
+2021-02-24 10:23:57,204 DEBUG {conn-10005, pstmt-20004} created. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:23:57,205 DEBUG {conn-10005, pstmt-20004} Parameters : []
+2021-02-24 10:23:57,205 DEBUG {conn-10005, pstmt-20004} Types : []
+2021-02-24 10:23:57,208 DEBUG {conn-10005, pstmt-20004} executed. 3.59372 millis. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:23:57,209 DEBUG {conn-10005, pstmt-20004, rs-50004} open
+2021-02-24 10:23:57,209 DEBUG {conn-10005, pstmt-20004, rs-50004} Header: [id, username, password, create_time]
+2021-02-24 10:23:57,210 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:23:57,211 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:23:57,212 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:23:57,212 DEBUG {conn-10005, pstmt-20004, rs-50004} closed
+2021-02-24 10:23:57,212 DEBUG {conn-10005, pstmt-20004} clearParameters. 
+2021-02-24 10:23:57,212 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:23:57,219 DEBUG {conn-10005} pool-connect
+2021-02-24 10:23:57,220 DEBUG {conn-10005, pstmt-20005} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:23:57,220 DEBUG {conn-10005, pstmt-20005} Parameters : []
+2021-02-24 10:23:57,220 DEBUG {conn-10005, pstmt-20005} Types : []
+2021-02-24 10:23:57,222 DEBUG {conn-10005, pstmt-20005} executed. 1.620301 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:23:57,222 DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2021-02-24 10:23:57,222 DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:23:57,222 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:23:57,223 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:23:57,224 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:23:57,224 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:23:57,225 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:23:57,225 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:23:57,225 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:23:57,226 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:23:57,227 DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2021-02-24 10:23:57,227 DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2021-02-24 10:23:57,227 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:26:28,604 DEBUG {conn-10005} closed
+2021-02-24 10:26:28,612 DEBUG {conn-10004} closed
+2021-02-24 10:26:28,617 DEBUG {conn-10003} closed
+2021-02-24 10:26:28,620 DEBUG {conn-10002} closed
+2021-02-24 10:26:28,622 DEBUG {conn-10001} closed
+2021-02-24 10:26:28,634 DEBUG {conn-10006,procId-13} connected
+2021-02-24 10:26:28,635 DEBUG {conn-10006} pool-connect
+2021-02-24 10:26:28,636 DEBUG {conn-10006, pstmt-20006} created. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:26:28,636 DEBUG {conn-10006, pstmt-20006} Parameters : []
+2021-02-24 10:26:28,636 DEBUG {conn-10006, pstmt-20006} Types : []
+2021-02-24 10:26:28,638 DEBUG {conn-10006, pstmt-20006} executed. 1.939743 millis. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:26:28,638 DEBUG {conn-10006, pstmt-20006, rs-50006} open
+2021-02-24 10:26:28,638 DEBUG {conn-10006, pstmt-20006, rs-50006} Header: [id, username, password, create_time]
+2021-02-24 10:26:28,639 DEBUG {conn-10006, pstmt-20006, rs-50006} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:26:28,639 DEBUG {conn-10006, pstmt-20006, rs-50006} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:26:28,639 DEBUG {conn-10006, pstmt-20006, rs-50006} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:26:28,639 DEBUG {conn-10006, pstmt-20006, rs-50006} closed
+2021-02-24 10:26:28,640 DEBUG {conn-10006, pstmt-20006} clearParameters. 
+2021-02-24 10:26:28,640 DEBUG {conn-10006} pool-recycle
+2021-02-24 10:26:28,651 DEBUG {conn-10006} pool-connect
+2021-02-24 10:26:28,652 DEBUG {conn-10006, pstmt-20007} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:26:28,652 DEBUG {conn-10006, pstmt-20007} Parameters : []
+2021-02-24 10:26:28,652 DEBUG {conn-10006, pstmt-20007} Types : []
+2021-02-24 10:26:28,653 DEBUG {conn-10006, pstmt-20007} executed. 1.378474 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:26:28,654 DEBUG {conn-10006, pstmt-20007, rs-50007} open
+2021-02-24 10:26:28,654 DEBUG {conn-10006, pstmt-20007, rs-50007} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:26:28,654 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:26:28,654 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:26:28,655 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:26:28,655 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:26:28,656 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:26:28,657 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:26:28,657 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:26:28,657 DEBUG {conn-10006, pstmt-20007, rs-50007} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:26:28,657 DEBUG {conn-10006, pstmt-20007, rs-50007} closed
+2021-02-24 10:26:28,658 DEBUG {conn-10006, pstmt-20007} clearParameters. 
+2021-02-24 10:26:28,658 DEBUG {conn-10006} pool-recycle
+2021-02-24 10:27:31,892 DEBUG {conn-10006} closed
+2021-02-24 10:27:31,916 DEBUG {conn-10007,procId-14} connected
+2021-02-24 10:27:31,917 DEBUG {conn-10007} pool-connect
+2021-02-24 10:27:31,918 DEBUG {conn-10007, pstmt-20008} created. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:27:31,918 DEBUG {conn-10007, pstmt-20008} Parameters : []
+2021-02-24 10:27:31,918 DEBUG {conn-10007, pstmt-20008} Types : []
+2021-02-24 10:27:31,920 DEBUG {conn-10007, pstmt-20008} executed. 1.855393 millis. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:27:31,920 DEBUG {conn-10007, pstmt-20008, rs-50008} open
+2021-02-24 10:27:31,920 DEBUG {conn-10007, pstmt-20008, rs-50008} Header: [id, username, password, create_time]
+2021-02-24 10:27:31,920 DEBUG {conn-10007, pstmt-20008, rs-50008} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:27:31,920 DEBUG {conn-10007, pstmt-20008, rs-50008} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:27:31,921 DEBUG {conn-10007, pstmt-20008, rs-50008} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:27:31,921 DEBUG {conn-10007, pstmt-20008, rs-50008} closed
+2021-02-24 10:27:31,921 DEBUG {conn-10007, pstmt-20008} clearParameters. 
+2021-02-24 10:27:31,921 DEBUG {conn-10007} pool-recycle
+2021-02-24 10:27:31,934 DEBUG {conn-10007} pool-connect
+2021-02-24 10:27:31,935 DEBUG {conn-10007, pstmt-20009} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:27:31,935 DEBUG {conn-10007, pstmt-20009} Parameters : []
+2021-02-24 10:27:31,935 DEBUG {conn-10007, pstmt-20009} Types : []
+2021-02-24 10:27:31,937 DEBUG {conn-10007, pstmt-20009} executed. 1.928518 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:27:31,937 DEBUG {conn-10007, pstmt-20009, rs-50009} open
+2021-02-24 10:27:31,937 DEBUG {conn-10007, pstmt-20009, rs-50009} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:27:31,938 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:27:31,938 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:27:31,938 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:27:31,939 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:27:31,939 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:27:31,939 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:27:31,939 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:27:31,940 DEBUG {conn-10007, pstmt-20009, rs-50009} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:27:31,940 DEBUG {conn-10007, pstmt-20009, rs-50009} closed
+2021-02-24 10:27:31,940 DEBUG {conn-10007, pstmt-20009} clearParameters. 
+2021-02-24 10:27:31,940 DEBUG {conn-10007} pool-recycle
+2021-02-24 10:28:29,556 DEBUG {conn-10007, pstmt-20008} closed
+2021-02-24 10:28:29,556 DEBUG {conn-10007, pstmt-20009} closed
+2021-02-24 10:28:29,557 DEBUG {conn-10007} closed
+2021-02-24 10:29:22,806 DEBUG {conn-10001,procId-15} connected
+2021-02-24 10:29:22,823 DEBUG {conn-10002,procId-16} connected
+2021-02-24 10:29:22,838 DEBUG {conn-10003,procId-17} connected
+2021-02-24 10:29:22,851 DEBUG {conn-10004,procId-18} connected
+2021-02-24 10:29:22,865 DEBUG {conn-10005,procId-19} connected
+2021-02-24 10:29:22,868 DEBUG {conn-10005} pool-connect
+2021-02-24 10:29:23,125 DEBUG {conn-10005, pstmt-20000} created. select * from t_users u where u.username=?
+2021-02-24 10:29:23,133 DEBUG {conn-10005, pstmt-20000} Parameters : [admin]
+2021-02-24 10:29:23,133 DEBUG {conn-10005, pstmt-20000} Types : [VARCHAR]
+2021-02-24 10:29:23,143 DEBUG {conn-10005, pstmt-20000} executed. 13.160616 millis. select * from t_users u where u.username=?
+2021-02-24 10:29:23,146 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-02-24 10:29:23,148 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-02-24 10:29:23,154 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:29:23,156 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-02-24 10:29:23,159 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:29:23,160 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:29:23,371 DEBUG {conn-10005} pool-connect
+2021-02-24 10:29:23,377 DEBUG {conn-10005, pstmt-20001} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=? or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=?))
+        order by p.create_time desc
+2021-02-24 10:29:23,378 DEBUG {conn-10005, pstmt-20001} Parameters : [3, 3]
+2021-02-24 10:29:23,378 DEBUG {conn-10005, pstmt-20001} Types : [INTEGER, INTEGER]
+2021-02-24 10:29:23,382 DEBUG {conn-10005, pstmt-20001} executed. 3.516425 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=? or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=?))
+        order by p.create_time desc
+2021-02-24 10:29:23,382 DEBUG {conn-10005, pstmt-20001, rs-50001} open
+2021-02-24 10:29:23,382 DEBUG {conn-10005, pstmt-20001, rs-50001} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:29:23,382 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:29:23,386 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:29:23,387 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:29:23,387 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:29:23,387 DEBUG {conn-10005, pstmt-20001, rs-50001} closed
+2021-02-24 10:29:23,387 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:29:23,388 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:29:23,398 DEBUG {conn-10005} pool-connect
+2021-02-24 10:29:23,400 DEBUG {conn-10005, pstmt-20002} created. select count(user_id) from t_users_focus where focus_user_id=?
+2021-02-24 10:29:23,400 DEBUG {conn-10005, pstmt-20002} Parameters : [3]
+2021-02-24 10:29:23,400 DEBUG {conn-10005, pstmt-20002} Types : [INTEGER]
+2021-02-24 10:29:23,401 DEBUG {conn-10005, pstmt-20002} executed. 1.002585 millis. select count(user_id) from t_users_focus where focus_user_id=?
+2021-02-24 10:29:23,401 DEBUG {conn-10005, pstmt-20002, rs-50002} open
+2021-02-24 10:29:23,401 DEBUG {conn-10005, pstmt-20002, rs-50002} Header: [count(user_id)]
+2021-02-24 10:29:23,401 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [2]
+2021-02-24 10:29:23,402 DEBUG {conn-10005, pstmt-20002, rs-50002} closed
+2021-02-24 10:29:23,402 DEBUG {conn-10005, pstmt-20002} clearParameters. 
+2021-02-24 10:29:23,402 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:29:23,404 DEBUG {conn-10005} pool-connect
+2021-02-24 10:29:23,405 DEBUG {conn-10005, pstmt-20003} created. select count(user_id) from t_users_focus where user_id=?
+2021-02-24 10:29:23,405 DEBUG {conn-10005, pstmt-20003} Parameters : [3]
+2021-02-24 10:29:23,405 DEBUG {conn-10005, pstmt-20003} Types : [INTEGER]
+2021-02-24 10:29:23,406 DEBUG {conn-10005, pstmt-20003} executed. 1.109386 millis. select count(user_id) from t_users_focus where user_id=?
+2021-02-24 10:29:23,407 DEBUG {conn-10005, pstmt-20003, rs-50003} open
+2021-02-24 10:29:23,407 DEBUG {conn-10005, pstmt-20003, rs-50003} Header: [count(user_id)]
+2021-02-24 10:29:23,407 DEBUG {conn-10005, pstmt-20003, rs-50003} Result: [1]
+2021-02-24 10:29:23,407 DEBUG {conn-10005, pstmt-20003, rs-50003} closed
+2021-02-24 10:29:23,407 DEBUG {conn-10005, pstmt-20003} clearParameters. 
+2021-02-24 10:29:23,408 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:29:38,599 DEBUG {conn-10005} pool-connect
+2021-02-24 10:29:38,610 DEBUG {conn-10005, pstmt-20004} created. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:29:38,610 DEBUG {conn-10005, pstmt-20004} Parameters : []
+2021-02-24 10:29:38,611 DEBUG {conn-10005, pstmt-20004} Types : []
+2021-02-24 10:29:38,614 DEBUG {conn-10005, pstmt-20004} executed. 3.440414 millis. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:29:38,614 DEBUG {conn-10005, pstmt-20004, rs-50004} open
+2021-02-24 10:29:38,614 DEBUG {conn-10005, pstmt-20004, rs-50004} Header: [id, username, password, create_time]
+2021-02-24 10:29:38,614 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:29:38,615 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:29:38,615 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:29:38,615 DEBUG {conn-10005, pstmt-20004, rs-50004} closed
+2021-02-24 10:29:38,616 DEBUG {conn-10005, pstmt-20004} clearParameters. 
+2021-02-24 10:29:38,616 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:29:38,631 DEBUG {conn-10005} pool-connect
+2021-02-24 10:29:38,633 DEBUG {conn-10005, pstmt-20005} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:29:38,633 DEBUG {conn-10005, pstmt-20005} Parameters : []
+2021-02-24 10:29:38,633 DEBUG {conn-10005, pstmt-20005} Types : []
+2021-02-24 10:29:38,635 DEBUG {conn-10005, pstmt-20005} executed. 1.962515 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:29:38,635 DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2021-02-24 10:29:38,635 DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:29:38,636 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:29:38,636 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:29:38,637 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:29:38,637 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:29:38,638 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:29:38,638 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:29:38,638 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:29:38,639 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:29:38,640 DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2021-02-24 10:29:38,640 DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2021-02-24 10:29:38,640 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:34:32,472 DEBUG {conn-10001} closed
+2021-02-24 10:34:32,473 DEBUG {conn-10002} closed
+2021-02-24 10:34:32,473 DEBUG {conn-10003} closed
+2021-02-24 10:34:32,474 DEBUG {conn-10004} closed
+2021-02-24 10:34:32,474 DEBUG {conn-10005, pstmt-20000} closed
+2021-02-24 10:34:32,474 DEBUG {conn-10005, pstmt-20001} closed
+2021-02-24 10:34:32,474 DEBUG {conn-10005, pstmt-20002} closed
+2021-02-24 10:34:32,474 DEBUG {conn-10005, pstmt-20003} closed
+2021-02-24 10:34:32,474 DEBUG {conn-10005, pstmt-20004} closed
+2021-02-24 10:34:32,474 DEBUG {conn-10005, pstmt-20005} closed
+2021-02-24 10:34:32,475 DEBUG {conn-10005} closed
+2021-02-24 10:35:14,182 DEBUG {conn-10001,procId-20} connected
+2021-02-24 10:35:14,199 DEBUG {conn-10002,procId-21} connected
+2021-02-24 10:35:14,214 DEBUG {conn-10003,procId-22} connected
+2021-02-24 10:35:14,228 DEBUG {conn-10004,procId-23} connected
+2021-02-24 10:35:14,242 DEBUG {conn-10005,procId-24} connected
+2021-02-24 10:35:14,247 DEBUG {conn-10005} pool-connect
+2021-02-24 10:35:14,487 DEBUG {conn-10005, pstmt-20000} created. select * from t_users u where u.username=?
+2021-02-24 10:35:14,495 DEBUG {conn-10005, pstmt-20000} Parameters : [admin]
+2021-02-24 10:35:14,495 DEBUG {conn-10005, pstmt-20000} Types : [VARCHAR]
+2021-02-24 10:35:14,506 DEBUG {conn-10005, pstmt-20000} executed. 13.81714 millis. select * from t_users u where u.username=?
+2021-02-24 10:35:14,509 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-02-24 10:35:14,511 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-02-24 10:35:14,516 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:35:14,519 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-02-24 10:35:14,520 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:35:14,522 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:35:43,028 DEBUG {conn-10005} pool-connect
+2021-02-24 10:35:43,047 DEBUG {conn-10005, pstmt-20001} created. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:35:43,048 DEBUG {conn-10005, pstmt-20001} Parameters : []
+2021-02-24 10:35:43,048 DEBUG {conn-10005, pstmt-20001} Types : []
+2021-02-24 10:35:43,050 DEBUG {conn-10005, pstmt-20001} executed. 2.644696 millis. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:35:43,051 DEBUG {conn-10005, pstmt-20001, rs-50001} open
+2021-02-24 10:35:43,051 DEBUG {conn-10005, pstmt-20001, rs-50001} Header: [id, username, password, create_time]
+2021-02-24 10:35:43,051 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:35:43,052 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:35:43,052 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:35:43,052 DEBUG {conn-10005, pstmt-20001, rs-50001} closed
+2021-02-24 10:35:43,053 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:35:43,053 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:35:43,067 DEBUG {conn-10005} pool-connect
+2021-02-24 10:35:43,071 DEBUG {conn-10005, pstmt-20002} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:35:43,071 DEBUG {conn-10005, pstmt-20002} Parameters : []
+2021-02-24 10:35:43,071 DEBUG {conn-10005, pstmt-20002} Types : []
+2021-02-24 10:35:43,077 DEBUG {conn-10005, pstmt-20002} executed. 5.643151 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:35:43,077 DEBUG {conn-10005, pstmt-20002, rs-50002} open
+2021-02-24 10:35:43,077 DEBUG {conn-10005, pstmt-20002, rs-50002} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:35:43,077 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:35:43,082 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:35:43,082 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:35:43,083 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:35:43,083 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:35:43,084 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:35:43,084 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:35:43,085 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:35:43,086 DEBUG {conn-10005, pstmt-20002, rs-50002} closed
+2021-02-24 10:35:43,086 DEBUG {conn-10005, pstmt-20002} clearParameters. 
+2021-02-24 10:35:43,086 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:39:07,371 DEBUG {conn-10001} closed
+2021-02-24 10:39:07,372 DEBUG {conn-10002} closed
+2021-02-24 10:39:07,373 DEBUG {conn-10003} closed
+2021-02-24 10:39:07,373 DEBUG {conn-10004} closed
+2021-02-24 10:39:07,373 DEBUG {conn-10005, pstmt-20000} closed
+2021-02-24 10:39:07,373 DEBUG {conn-10005, pstmt-20001} closed
+2021-02-24 10:39:07,373 DEBUG {conn-10005, pstmt-20002} closed
+2021-02-24 10:39:07,374 DEBUG {conn-10005} closed
+2021-02-24 10:39:26,825 DEBUG {conn-10001,procId-25} connected
+2021-02-24 10:39:26,843 DEBUG {conn-10002,procId-26} connected
+2021-02-24 10:39:26,859 DEBUG {conn-10003,procId-27} connected
+2021-02-24 10:39:26,873 DEBUG {conn-10004,procId-28} connected
+2021-02-24 10:39:26,886 DEBUG {conn-10005,procId-29} connected
+2021-02-24 10:39:26,890 DEBUG {conn-10005} pool-connect
+2021-02-24 10:39:27,195 DEBUG {conn-10005, pstmt-20000} created. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:39:27,202 DEBUG {conn-10005, pstmt-20000} Parameters : []
+2021-02-24 10:39:27,203 DEBUG {conn-10005, pstmt-20000} Types : []
+2021-02-24 10:39:27,212 DEBUG {conn-10005, pstmt-20000} executed. 12.852721 millis. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:39:27,216 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-02-24 10:39:27,217 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-02-24 10:39:27,223 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:39:27,226 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:39:27,226 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:39:27,226 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-02-24 10:39:27,228 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:39:27,230 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:39:27,253 DEBUG {conn-10005} pool-connect
+2021-02-24 10:39:27,305 DEBUG {conn-10005, pstmt-20001} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:39:27,306 DEBUG {conn-10005, pstmt-20001} Parameters : []
+2021-02-24 10:39:27,306 DEBUG {conn-10005, pstmt-20001} Types : []
+2021-02-24 10:39:27,309 DEBUG {conn-10005, pstmt-20001} executed. 2.776513 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:39:27,309 DEBUG {conn-10005, pstmt-20001, rs-50001} open
+2021-02-24 10:39:27,309 DEBUG {conn-10005, pstmt-20001, rs-50001} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:39:27,309 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:39:27,313 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:39:27,313 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:39:27,314 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:39:27,314 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:39:27,314 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:39:27,315 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:39:27,316 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:39:27,316 DEBUG {conn-10005, pstmt-20001, rs-50001} closed
+2021-02-24 10:39:27,316 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:39:27,317 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:39:49,226 DEBUG {conn-10005} pool-connect
+2021-02-24 10:39:49,232 DEBUG {conn-10005, pstmt-20002} created. select * from t_users u where u.id=?
+2021-02-24 10:39:49,233 DEBUG {conn-10005, pstmt-20002} Parameters : [3]
+2021-02-24 10:39:49,233 DEBUG {conn-10005, pstmt-20002} Types : [INTEGER]
+2021-02-24 10:39:49,235 DEBUG {conn-10005, pstmt-20002} executed. 2.174513 millis. select * from t_users u where u.id=?
+2021-02-24 10:39:49,235 DEBUG {conn-10005, pstmt-20002, rs-50002} open
+2021-02-24 10:39:49,235 DEBUG {conn-10005, pstmt-20002, rs-50002} Header: [id, username, password, create_time]
+2021-02-24 10:39:49,236 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:39:49,237 DEBUG {conn-10005, pstmt-20002, rs-50002} closed
+2021-02-24 10:39:49,237 DEBUG {conn-10005, pstmt-20002} clearParameters. 
+2021-02-24 10:39:49,237 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:39:49,244 DEBUG {conn-10005} pool-connect
+2021-02-24 10:39:49,247 DEBUG {conn-10005, pstmt-20003} created. (select 1 from t_users_focus where user_id=? and focus_user_id=?)
+        union all
+        (select 2 from t_users_focus where user_id=? and focus_user_id=?)
+2021-02-24 10:39:49,248 DEBUG {conn-10005, pstmt-20003} Parameters : [3, 3, 3, 3]
+2021-02-24 10:39:49,248 DEBUG {conn-10005, pstmt-20003} Types : [INTEGER, INTEGER, INTEGER, INTEGER]
+2021-02-24 10:39:49,249 DEBUG {conn-10005, pstmt-20003} executed. 1.630885 millis. (select 1 from t_users_focus where user_id=? and focus_user_id=?)
+        union all
+        (select 2 from t_users_focus where user_id=? and focus_user_id=?)
+2021-02-24 10:39:49,249 DEBUG {conn-10005, pstmt-20003, rs-50003} open
+2021-02-24 10:39:49,249 DEBUG {conn-10005, pstmt-20003, rs-50003} Header: [1]
+2021-02-24 10:39:49,250 DEBUG {conn-10005, pstmt-20003, rs-50003} closed
+2021-02-24 10:39:49,250 DEBUG {conn-10005, pstmt-20003} clearParameters. 
+2021-02-24 10:39:49,250 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:39:49,252 DEBUG {conn-10005} pool-connect
+2021-02-24 10:39:49,253 DEBUG {conn-10005, pstmt-20004} created. select id,content,create_time,user_id from t_posts where user_id=? order by create_time desc
+2021-02-24 10:39:49,253 DEBUG {conn-10005, pstmt-20004} Parameters : [3]
+2021-02-24 10:39:49,253 DEBUG {conn-10005, pstmt-20004} Types : [INTEGER]
+2021-02-24 10:39:49,270 DEBUG {conn-10005, pstmt-20004} executed. 16.65395 millis. select id,content,create_time,user_id from t_posts where user_id=? order by create_time desc
+2021-02-24 10:39:49,270 DEBUG {conn-10005, pstmt-20004, rs-50004} open
+2021-02-24 10:39:49,271 DEBUG {conn-10005, pstmt-20004, rs-50004} Header: [id, content, create_time, user_id]
+2021-02-24 10:39:49,272 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [9, 123, 2021-02-23 16:13:48.0, 3]
+2021-02-24 10:39:49,273 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3]
+2021-02-24 10:39:49,273 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3]
+2021-02-24 10:39:49,274 DEBUG {conn-10005, pstmt-20004, rs-50004} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3]
+2021-02-24 10:39:49,275 DEBUG {conn-10005, pstmt-20004, rs-50004} closed
+2021-02-24 10:39:49,275 DEBUG {conn-10005, pstmt-20004} clearParameters. 
+2021-02-24 10:39:49,275 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:41:04,207 DEBUG {conn-10005} closed
+2021-02-24 10:41:04,209 DEBUG {conn-10004} closed
+2021-02-24 10:41:04,211 DEBUG {conn-10003} closed
+2021-02-24 10:41:04,213 DEBUG {conn-10002} closed
+2021-02-24 10:41:04,214 DEBUG {conn-10001} closed
+2021-02-24 10:41:04,226 DEBUG {conn-10006,procId-30} connected
+2021-02-24 10:41:04,228 DEBUG {conn-10006} pool-connect
+2021-02-24 10:41:04,235 DEBUG {conn-10006, pstmt-20005} created. insert into t_posts (content,create_time,user_id)
+        values (?,?,?)
+2021-02-24 10:41:04,238 DEBUG {conn-10006, pstmt-20005} Parameters : [寸衫的价格是两磅十五便士, 2021-02-24 10:41:04.197, null]
+2021-02-24 10:41:04,239 DEBUG {conn-10006, pstmt-20005} Types : [VARCHAR, TIMESTAMP, OTHER]
+2021-02-24 10:41:04,244 DEBUG {conn-10006, pstmt-20005} executed. 5.60723 millis. insert into t_posts (content,create_time,user_id)
+        values (?,?,?)
+2021-02-24 10:41:04,244 DEBUG {conn-10006, pstmt-20005} clearParameters. 
+2021-02-24 10:41:04,244 DEBUG {conn-10006} pool-recycle
+2021-02-24 10:47:52,279 DEBUG {conn-10006, pstmt-20005} closed
+2021-02-24 10:47:52,280 DEBUG {conn-10006} closed
+2021-02-24 10:48:30,580 DEBUG {conn-10001,procId-31} connected
+2021-02-24 10:48:30,597 DEBUG {conn-10002,procId-32} connected
+2021-02-24 10:48:30,611 DEBUG {conn-10003,procId-33} connected
+2021-02-24 10:48:30,625 DEBUG {conn-10004,procId-34} connected
+2021-02-24 10:48:30,637 DEBUG {conn-10005,procId-35} connected
+2021-02-24 10:48:30,641 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:30,837 DEBUG {conn-10005, pstmt-20000} created. select * from t_users u where u.username=?
+2021-02-24 10:48:30,845 DEBUG {conn-10005, pstmt-20000} Parameters : [xiaohei]
+2021-02-24 10:48:30,845 DEBUG {conn-10005, pstmt-20000} Types : [VARCHAR]
+2021-02-24 10:48:30,857 DEBUG {conn-10005, pstmt-20000} executed. 15.35726 millis. select * from t_users u where u.username=?
+2021-02-24 10:48:30,860 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-02-24 10:48:30,862 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-02-24 10:48:30,868 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:48:30,871 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-02-24 10:48:30,873 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:48:30,874 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:48:31,092 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:31,098 DEBUG {conn-10005, pstmt-20001} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=? or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=?))
+        order by p.create_time desc
+2021-02-24 10:48:31,099 DEBUG {conn-10005, pstmt-20001} Parameters : [5, 5]
+2021-02-24 10:48:31,099 DEBUG {conn-10005, pstmt-20001} Types : [INTEGER, INTEGER]
+2021-02-24 10:48:31,102 DEBUG {conn-10005, pstmt-20001} executed. 3.187682 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=? or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=?))
+        order by p.create_time desc
+2021-02-24 10:48:31,102 DEBUG {conn-10005, pstmt-20001, rs-50001} open
+2021-02-24 10:48:31,102 DEBUG {conn-10005, pstmt-20001, rs-50001} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:48:31,103 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:48:31,107 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:48:31,107 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:48:31,107 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:48:31,108 DEBUG {conn-10005, pstmt-20001, rs-50001} closed
+2021-02-24 10:48:31,108 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:48:31,108 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:48:31,117 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:31,118 DEBUG {conn-10005, pstmt-20002} created. select count(user_id) from t_users_focus where focus_user_id=?
+2021-02-24 10:48:31,118 DEBUG {conn-10005, pstmt-20002} Parameters : [5]
+2021-02-24 10:48:31,118 DEBUG {conn-10005, pstmt-20002} Types : [INTEGER]
+2021-02-24 10:48:31,120 DEBUG {conn-10005, pstmt-20002} executed. 1.822358 millis. select count(user_id) from t_users_focus where focus_user_id=?
+2021-02-24 10:48:31,120 DEBUG {conn-10005, pstmt-20002, rs-50002} open
+2021-02-24 10:48:31,120 DEBUG {conn-10005, pstmt-20002, rs-50002} Header: [count(user_id)]
+2021-02-24 10:48:31,121 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [1]
+2021-02-24 10:48:31,121 DEBUG {conn-10005, pstmt-20002, rs-50002} closed
+2021-02-24 10:48:31,121 DEBUG {conn-10005, pstmt-20002} clearParameters. 
+2021-02-24 10:48:31,121 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:48:31,124 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:31,124 DEBUG {conn-10005, pstmt-20003} created. select count(user_id) from t_users_focus where user_id=?
+2021-02-24 10:48:31,125 DEBUG {conn-10005, pstmt-20003} Parameters : [5]
+2021-02-24 10:48:31,125 DEBUG {conn-10005, pstmt-20003} Types : [INTEGER]
+2021-02-24 10:48:31,125 DEBUG {conn-10005, pstmt-20003} executed. 0.882314 millis. select count(user_id) from t_users_focus where user_id=?
+2021-02-24 10:48:31,126 DEBUG {conn-10005, pstmt-20003, rs-50003} open
+2021-02-24 10:48:31,126 DEBUG {conn-10005, pstmt-20003, rs-50003} Header: [count(user_id)]
+2021-02-24 10:48:31,126 DEBUG {conn-10005, pstmt-20003, rs-50003} Result: [1]
+2021-02-24 10:48:31,126 DEBUG {conn-10005, pstmt-20003, rs-50003} closed
+2021-02-24 10:48:31,126 DEBUG {conn-10005, pstmt-20003} clearParameters. 
+2021-02-24 10:48:31,126 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:48:52,539 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:52,554 DEBUG {conn-10005, pstmt-20004} created. insert into t_posts (content,create_time,user_id)
+        values (?,?,?)
+2021-02-24 10:48:52,557 DEBUG {conn-10005, pstmt-20004} Parameters : [hello xiaohei, 2021-02-24 10:48:52.538, 5]
+2021-02-24 10:48:52,557 DEBUG {conn-10005, pstmt-20004} Types : [VARCHAR, TIMESTAMP, INTEGER]
+2021-02-24 10:48:52,562 DEBUG {conn-10005, pstmt-20004} executed. 4.566478 millis. insert into t_posts (content,create_time,user_id)
+        values (?,?,?)
+2021-02-24 10:48:52,562 DEBUG {conn-10005, pstmt-20004} clearParameters. 
+2021-02-24 10:48:52,562 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:48:52,576 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:52,576 DEBUG {conn-10005, pstmt-20001} Parameters : [5, 5]
+2021-02-24 10:48:52,576 DEBUG {conn-10005, pstmt-20001} Types : [INTEGER, INTEGER]
+2021-02-24 10:48:52,578 DEBUG {conn-10005, pstmt-20001} executed. 1.50933 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=? or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=?))
+        order by p.create_time desc
+2021-02-24 10:48:52,578 DEBUG {conn-10005, pstmt-20001, rs-50004} open
+2021-02-24 10:48:52,578 DEBUG {conn-10005, pstmt-20001, rs-50004} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:48:52,578 DEBUG {conn-10005, pstmt-20001, rs-50004} Result: [11, hello xiaohei, 2021-02-24 10:48:53.0, 5, xiaohei]
+2021-02-24 10:48:52,579 DEBUG {conn-10005, pstmt-20001, rs-50004} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:48:52,579 DEBUG {conn-10005, pstmt-20001, rs-50004} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:48:52,580 DEBUG {conn-10005, pstmt-20001, rs-50004} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:48:52,580 DEBUG {conn-10005, pstmt-20001, rs-50004} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:48:52,580 DEBUG {conn-10005, pstmt-20001, rs-50004} closed
+2021-02-24 10:48:52,581 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:48:52,581 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:48:55,203 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:55,209 DEBUG {conn-10005, pstmt-20005} created. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:48:55,210 DEBUG {conn-10005, pstmt-20005} Parameters : []
+2021-02-24 10:48:55,210 DEBUG {conn-10005, pstmt-20005} Types : []
+2021-02-24 10:48:55,213 DEBUG {conn-10005, pstmt-20005} executed. 3.13316 millis. select id,username,password,create_time from t_users order by create_time limit 5
+2021-02-24 10:48:55,214 DEBUG {conn-10005, pstmt-20005, rs-50005} open
+2021-02-24 10:48:55,214 DEBUG {conn-10005, pstmt-20005, rs-50005} Header: [id, username, password, create_time]
+2021-02-24 10:48:55,215 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:48:55,216 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:48:55,217 DEBUG {conn-10005, pstmt-20005, rs-50005} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:48:55,219 DEBUG {conn-10005, pstmt-20005, rs-50005} closed
+2021-02-24 10:48:55,219 DEBUG {conn-10005, pstmt-20005} clearParameters. 
+2021-02-24 10:48:55,220 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:48:55,230 DEBUG {conn-10005} pool-connect
+2021-02-24 10:48:55,231 DEBUG {conn-10005, pstmt-20006} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:48:55,231 DEBUG {conn-10005, pstmt-20006} Parameters : []
+2021-02-24 10:48:55,231 DEBUG {conn-10005, pstmt-20006} Types : []
+2021-02-24 10:48:55,233 DEBUG {conn-10005, pstmt-20006} executed. 1.429791 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:48:55,233 DEBUG {conn-10005, pstmt-20006, rs-50006} open
+2021-02-24 10:48:55,233 DEBUG {conn-10005, pstmt-20006, rs-50006} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:48:55,233 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [11, hello xiaohei, 2021-02-24 10:48:53.0, 5, xiaohei]
+2021-02-24 10:48:55,234 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:48:55,235 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:48:55,235 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:48:55,236 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:48:55,238 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:48:55,239 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:48:55,242 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:48:55,242 DEBUG {conn-10005, pstmt-20006, rs-50006} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:48:55,242 DEBUG {conn-10005, pstmt-20006, rs-50006} closed
+2021-02-24 10:48:55,243 DEBUG {conn-10005, pstmt-20006} clearParameters. 
+2021-02-24 10:48:55,243 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:49:52,033 DEBUG {conn-10001} closed
+2021-02-24 10:49:52,034 DEBUG {conn-10002} closed
+2021-02-24 10:49:52,034 DEBUG {conn-10003} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10004} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10005, pstmt-20000} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10005, pstmt-20002} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10005, pstmt-20003} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10005, pstmt-20004} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10005, pstmt-20001} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10005, pstmt-20005} closed
+2021-02-24 10:49:52,035 DEBUG {conn-10005, pstmt-20006} closed
+2021-02-24 10:49:52,036 DEBUG {conn-10005} closed
+2021-02-24 10:50:01,342 DEBUG {conn-10001,procId-36} connected
+2021-02-24 10:50:01,358 DEBUG {conn-10002,procId-37} connected
+2021-02-24 10:50:01,372 DEBUG {conn-10003,procId-38} connected
+2021-02-24 10:50:01,386 DEBUG {conn-10004,procId-39} connected
+2021-02-24 10:50:01,399 DEBUG {conn-10005,procId-40} connected
+2021-02-24 10:50:01,403 DEBUG {conn-10005} pool-connect
+2021-02-24 10:50:01,545 DEBUG {conn-10005, pstmt-20000} created. select id,username,password,create_time from t_users order by create_time desc limit 5
+2021-02-24 10:50:01,552 DEBUG {conn-10005, pstmt-20000} Parameters : []
+2021-02-24 10:50:01,552 DEBUG {conn-10005, pstmt-20000} Types : []
+2021-02-24 10:50:01,562 DEBUG {conn-10005, pstmt-20000} executed. 12.845344 millis. select id,username,password,create_time from t_users order by create_time desc limit 5
+2021-02-24 10:50:01,566 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-02-24 10:50:01,568 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-02-24 10:50:01,573 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:50:01,575 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:50:01,575 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:50:01,576 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-02-24 10:50:01,578 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:50:01,579 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:50:01,642 DEBUG {conn-10005} pool-connect
+2021-02-24 10:50:01,693 DEBUG {conn-10005, pstmt-20001} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:50:01,693 DEBUG {conn-10005, pstmt-20001} Parameters : []
+2021-02-24 10:50:01,694 DEBUG {conn-10005, pstmt-20001} Types : []
+2021-02-24 10:50:01,696 DEBUG {conn-10005, pstmt-20001} executed. 2.378494 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:50:01,696 DEBUG {conn-10005, pstmt-20001, rs-50001} open
+2021-02-24 10:50:01,696 DEBUG {conn-10005, pstmt-20001, rs-50001} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:50:01,696 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [11, hello xiaohei, 2021-02-24 10:48:53.0, 5, xiaohei]
+2021-02-24 10:50:01,700 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:50:01,701 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:50:01,701 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:50:01,701 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:50:01,702 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:50:01,702 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:50:01,702 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:50:01,703 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:50:01,703 DEBUG {conn-10005, pstmt-20001, rs-50001} closed
+2021-02-24 10:50:01,704 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:50:01,704 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:50:25,322 DEBUG {conn-10005} pool-connect
+2021-02-24 10:50:25,329 DEBUG {conn-10005, pstmt-20002} created. select * from t_users u where u.id=?
+2021-02-24 10:50:25,332 DEBUG {conn-10005, pstmt-20002} Parameters : [3]
+2021-02-24 10:50:25,332 DEBUG {conn-10005, pstmt-20002} Types : [INTEGER]
+2021-02-24 10:50:25,336 DEBUG {conn-10005, pstmt-20002} executed. 3.488522 millis. select * from t_users u where u.id=?
+2021-02-24 10:50:25,336 DEBUG {conn-10005, pstmt-20002, rs-50002} open
+2021-02-24 10:50:25,336 DEBUG {conn-10005, pstmt-20002, rs-50002} Header: [id, username, password, create_time]
+2021-02-24 10:50:25,337 DEBUG {conn-10005, pstmt-20002, rs-50002} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:50:25,337 DEBUG {conn-10005, pstmt-20002, rs-50002} closed
+2021-02-24 10:50:25,338 DEBUG {conn-10005, pstmt-20002} clearParameters. 
+2021-02-24 10:50:25,338 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:50:25,345 DEBUG {conn-10005} pool-connect
+2021-02-24 10:50:25,351 DEBUG {conn-10005, pstmt-20003} created. (select 1 from t_users_focus where user_id=? and focus_user_id=?)
+        union all
+        (select 2 from t_users_focus where user_id=? and focus_user_id=?)
+2021-02-24 10:50:25,352 DEBUG {conn-10005, pstmt-20003} Parameters : [5, 3, 3, 5]
+2021-02-24 10:50:25,352 DEBUG {conn-10005, pstmt-20003} Types : [INTEGER, INTEGER, INTEGER, INTEGER]
+2021-02-24 10:50:25,354 DEBUG {conn-10005, pstmt-20003} executed. 2.476316 millis. (select 1 from t_users_focus where user_id=? and focus_user_id=?)
+        union all
+        (select 2 from t_users_focus where user_id=? and focus_user_id=?)
+2021-02-24 10:50:25,354 DEBUG {conn-10005, pstmt-20003, rs-50003} open
+2021-02-24 10:50:25,354 DEBUG {conn-10005, pstmt-20003, rs-50003} Header: [1]
+2021-02-24 10:50:25,355 DEBUG {conn-10005, pstmt-20003, rs-50003} Result: [1]
+2021-02-24 10:50:25,355 DEBUG {conn-10005, pstmt-20003, rs-50003} Result: [2]
+2021-02-24 10:50:25,355 DEBUG {conn-10005, pstmt-20003, rs-50003} closed
+2021-02-24 10:50:25,356 DEBUG {conn-10005, pstmt-20003} clearParameters. 
+2021-02-24 10:50:25,356 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:51:03,400 DEBUG {conn-10005} pool-connect
+2021-02-24 10:51:03,400 DEBUG {conn-10005, pstmt-20000} Parameters : []
+2021-02-24 10:51:03,400 DEBUG {conn-10005, pstmt-20000} Types : []
+2021-02-24 10:51:03,405 DEBUG {conn-10005, pstmt-20000} executed. 4.929859 millis. select id,username,password,create_time from t_users order by create_time desc limit 5
+2021-02-24 10:51:03,406 DEBUG {conn-10005, pstmt-20000, rs-50004} open
+2021-02-24 10:51:03,406 DEBUG {conn-10005, pstmt-20000, rs-50004} Header: [id, username, password, create_time]
+2021-02-24 10:51:03,406 DEBUG {conn-10005, pstmt-20000, rs-50004} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:51:03,407 DEBUG {conn-10005, pstmt-20000, rs-50004} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:51:03,408 DEBUG {conn-10005, pstmt-20000, rs-50004} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:51:03,408 DEBUG {conn-10005, pstmt-20000, rs-50004} closed
+2021-02-24 10:51:03,409 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:51:03,409 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:51:03,422 DEBUG {conn-10005} pool-connect
+2021-02-24 10:51:03,422 DEBUG {conn-10005, pstmt-20001} Parameters : []
+2021-02-24 10:51:03,422 DEBUG {conn-10005, pstmt-20001} Types : []
+2021-02-24 10:51:03,424 DEBUG {conn-10005, pstmt-20001} executed. 1.616132 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:51:03,424 DEBUG {conn-10005, pstmt-20001, rs-50005} open
+2021-02-24 10:51:03,424 DEBUG {conn-10005, pstmt-20001, rs-50005} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:51:03,425 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [11, hello xiaohei, 2021-02-24 10:48:53.0, 5, xiaohei]
+2021-02-24 10:51:03,425 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:51:03,425 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:51:03,426 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:51:03,426 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:51:03,426 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:51:03,426 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:51:03,427 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:51:03,427 DEBUG {conn-10005, pstmt-20001, rs-50005} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:51:03,427 DEBUG {conn-10005, pstmt-20001, rs-50005} closed
+2021-02-24 10:51:03,428 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:51:03,428 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:52:11,463 DEBUG {conn-10005} closed
+2021-02-24 10:52:11,468 DEBUG {conn-10004} closed
+2021-02-24 10:52:11,470 DEBUG {conn-10003} closed
+2021-02-24 10:52:11,472 DEBUG {conn-10002} closed
+2021-02-24 10:52:11,474 DEBUG {conn-10001} closed
+2021-02-24 10:52:11,489 DEBUG {conn-10006,procId-41} connected
+2021-02-24 10:52:11,490 DEBUG {conn-10006} pool-connect
+2021-02-24 10:52:11,491 DEBUG {conn-10006, pstmt-20004} created. select id,username,password,create_time from t_users order by create_time desc limit 5
+2021-02-24 10:52:11,491 DEBUG {conn-10006, pstmt-20004} Parameters : []
+2021-02-24 10:52:11,491 DEBUG {conn-10006, pstmt-20004} Types : []
+2021-02-24 10:52:11,493 DEBUG {conn-10006, pstmt-20004} executed. 1.64628 millis. select id,username,password,create_time from t_users order by create_time desc limit 5
+2021-02-24 10:52:11,493 DEBUG {conn-10006, pstmt-20004, rs-50006} open
+2021-02-24 10:52:11,493 DEBUG {conn-10006, pstmt-20004, rs-50006} Header: [id, username, password, create_time]
+2021-02-24 10:52:11,493 DEBUG {conn-10006, pstmt-20004, rs-50006} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:52:11,493 DEBUG {conn-10006, pstmt-20004, rs-50006} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:52:11,494 DEBUG {conn-10006, pstmt-20004, rs-50006} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:52:11,494 DEBUG {conn-10006, pstmt-20004, rs-50006} closed
+2021-02-24 10:52:11,494 DEBUG {conn-10006, pstmt-20004} clearParameters. 
+2021-02-24 10:52:11,494 DEBUG {conn-10006} pool-recycle
+2021-02-24 10:52:11,507 DEBUG {conn-10006} pool-connect
+2021-02-24 10:52:11,508 DEBUG {conn-10006, pstmt-20005} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:52:11,508 DEBUG {conn-10006, pstmt-20005} Parameters : []
+2021-02-24 10:52:11,508 DEBUG {conn-10006, pstmt-20005} Types : []
+2021-02-24 10:52:11,509 DEBUG {conn-10006, pstmt-20005} executed. 1.504199 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:52:11,510 DEBUG {conn-10006, pstmt-20005, rs-50007} open
+2021-02-24 10:52:11,510 DEBUG {conn-10006, pstmt-20005, rs-50007} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:52:11,510 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [11, hello xiaohei, 2021-02-24 10:48:53.0, 5, xiaohei]
+2021-02-24 10:52:11,510 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:52:11,511 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:52:11,511 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:52:11,511 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:52:11,511 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:52:11,512 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:52:11,512 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:52:11,512 DEBUG {conn-10006, pstmt-20005, rs-50007} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:52:11,513 DEBUG {conn-10006, pstmt-20005, rs-50007} closed
+2021-02-24 10:52:11,513 DEBUG {conn-10006, pstmt-20005} clearParameters. 
+2021-02-24 10:52:11,513 DEBUG {conn-10006} pool-recycle
+2021-02-24 10:54:12,316 DEBUG {conn-10006, pstmt-20004} closed
+2021-02-24 10:54:12,316 DEBUG {conn-10006, pstmt-20005} closed
+2021-02-24 10:54:12,317 DEBUG {conn-10006} closed
+2021-02-24 10:54:28,555 DEBUG {conn-10001,procId-42} connected
+2021-02-24 10:54:28,573 DEBUG {conn-10002,procId-43} connected
+2021-02-24 10:54:28,587 DEBUG {conn-10003,procId-44} connected
+2021-02-24 10:54:28,602 DEBUG {conn-10004,procId-45} connected
+2021-02-24 10:54:28,616 DEBUG {conn-10005,procId-46} connected
+2021-02-24 10:54:28,619 DEBUG {conn-10005} pool-connect
+2021-02-24 10:54:28,775 DEBUG {conn-10005, pstmt-20000} created. select id,username,password,create_time from t_users order by create_time desc limit 5
+2021-02-24 10:54:28,783 DEBUG {conn-10005, pstmt-20000} Parameters : []
+2021-02-24 10:54:28,783 DEBUG {conn-10005, pstmt-20000} Types : []
+2021-02-24 10:54:28,795 DEBUG {conn-10005, pstmt-20000} executed. 15.309793 millis. select id,username,password,create_time from t_users order by create_time desc limit 5
+2021-02-24 10:54:28,798 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-02-24 10:54:28,800 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-02-24 10:54:28,806 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [5, xiaohei, 123, 2021-02-22 17:02:40.0]
+2021-02-24 10:54:28,808 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [4, xiaobai, 123, 2021-02-22 16:43:21.0]
+2021-02-24 10:54:28,808 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-02-24 10:54:28,809 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-02-24 10:54:28,810 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-02-24 10:54:28,811 DEBUG {conn-10005} pool-recycle
+2021-02-24 10:54:28,880 DEBUG {conn-10005} pool-connect
+2021-02-24 10:54:28,933 DEBUG {conn-10005, pstmt-20001} created. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:54:28,934 DEBUG {conn-10005, pstmt-20001} Parameters : []
+2021-02-24 10:54:28,934 DEBUG {conn-10005, pstmt-20001} Types : []
+2021-02-24 10:54:28,936 DEBUG {conn-10005, pstmt-20001} executed. 2.543347 millis. select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+2021-02-24 10:54:28,936 DEBUG {conn-10005, pstmt-20001, rs-50001} open
+2021-02-24 10:54:28,936 DEBUG {conn-10005, pstmt-20001, rs-50001} Header: [id, content, create_time, user_id, username]
+2021-02-24 10:54:28,937 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [11, hello xiaohei, 2021-02-24 10:48:53.0, 5, xiaohei]
+2021-02-24 10:54:28,941 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [9, 123, 2021-02-23 16:13:48.0, 3, admin]
+2021-02-24 10:54:28,941 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [8, 测试12121212, 2021-02-23 16:11:12.0, 4, xiaobai]
+2021-02-24 10:54:28,942 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [7, 从V领的咖啡馆, 2021-02-23 16:04:21.0, 4, xiaobai]
+2021-02-24 10:54:28,942 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [6, 将可从囧恩发出身心健康, 2021-02-23 16:03:44.0, 4, xiaobai]
+2021-02-24 10:54:28,942 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [5, 小小白, 2021-02-23 15:41:59.0, 4, xiaobai]
+2021-02-24 10:54:28,943 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [4, 看世纪东方, 2021-02-23 14:47:06.0, 3, admin]
+2021-02-24 10:54:28,943 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [3, 插入数据插入数据插入数据, 2021-02-23 14:44:11.0, 3, admin]
+2021-02-24 10:54:28,944 DEBUG {conn-10005, pstmt-20001, rs-50001} Result: [2, IER级土豆粉, 2021-02-22 11:37:48.0, 3, admin]
+2021-02-24 10:54:28,944 DEBUG {conn-10005, pstmt-20001, rs-50001} closed
+2021-02-24 10:54:28,944 DEBUG {conn-10005, pstmt-20001} clearParameters. 
+2021-02-24 10:54:28,944 DEBUG {conn-10005} pool-recycle
+2021-02-24 11:40:16,703 DEBUG {conn-10001} closed
+2021-02-24 11:40:16,704 DEBUG {conn-10002} closed
+2021-02-24 11:40:16,705 DEBUG {conn-10003} closed
+2021-02-24 11:40:16,705 DEBUG {conn-10004} closed
+2021-02-24 11:40:16,706 DEBUG {conn-10005, pstmt-20000} closed
+2021-02-24 11:40:16,706 DEBUG {conn-10005, pstmt-20001} closed
+2021-02-24 11:40:16,706 DEBUG {conn-10005} closed

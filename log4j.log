@@ -1,0 +1,22 @@
+2021-03-08 15:48:05,948 DEBUG {conn-10001,procId-8} connected
+2021-03-08 15:48:05,980 DEBUG {conn-10002,procId-9} connected
+2021-03-08 15:48:06,005 DEBUG {conn-10003,procId-10} connected
+2021-03-08 15:48:06,027 DEBUG {conn-10004,procId-11} connected
+2021-03-08 15:48:06,042 DEBUG {conn-10005,procId-12} connected
+2021-03-08 15:48:06,046 DEBUG {conn-10005} pool-connect
+2021-03-08 15:48:06,626 DEBUG {conn-10005, pstmt-20000} created. select * from t_users u where u.username=?
+2021-03-08 15:48:06,654 DEBUG {conn-10005, pstmt-20000} Parameters : [admin]
+2021-03-08 15:48:06,654 DEBUG {conn-10005, pstmt-20000} Types : [VARCHAR]
+2021-03-08 15:48:07,027 DEBUG {conn-10005, pstmt-20000} executed. 376.892973 millis. select * from t_users u where u.username=?
+2021-03-08 15:48:07,033 DEBUG {conn-10005, pstmt-20000, rs-50000} open
+2021-03-08 15:48:07,036 DEBUG {conn-10005, pstmt-20000, rs-50000} Header: [id, username, password, create_time]
+2021-03-08 15:48:07,067 DEBUG {conn-10005, pstmt-20000, rs-50000} Result: [3, admin, 123, 2021-02-20 10:05:38.0]
+2021-03-08 15:48:07,071 DEBUG {conn-10005, pstmt-20000, rs-50000} closed
+2021-03-08 15:48:07,074 DEBUG {conn-10005, pstmt-20000} clearParameters. 
+2021-03-08 15:48:07,076 DEBUG {conn-10005} pool-recycle
+2021-03-08 15:54:25,771 DEBUG {conn-10001} closed
+2021-03-08 15:54:25,772 DEBUG {conn-10002} closed
+2021-03-08 15:54:25,773 DEBUG {conn-10003} closed
+2021-03-08 15:54:25,774 DEBUG {conn-10004} closed
+2021-03-08 15:54:25,774 DEBUG {conn-10005, pstmt-20000} closed
+2021-03-08 15:54:25,774 DEBUG {conn-10005} closed

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yoyo.redisdemo.dao.UserFocusDao">
+    <insert id="insert">
+        insert into t_users_focus (user_id,focus_user_id,create_time)
+        values (#{id},#{focusid},#{createTime})
+    </insert>
+
+    <select id="getFollowStat" resultType="int">
+        (select 1 from t_users_focus where user_id=#{id} and focus_user_id=#{focusUserId})
+        union all
+        (select 2 from t_users_focus where user_id=#{focusUserId} and focus_user_id=#{id})
+    </select>
+
+    <delete id="delete">
+        delete from t_users_focus where user_id=#{id} and  focus_user_id=#{focusUserId}
+    </delete>
+
+    <select id="getFs" resultType="int">
+        select count(user_id) from t_users_focus where focus_user_id=#{id}
+    </select>
+
+    <select id="getFollows" resultType="int">
+        select count(user_id) from t_users_focus where user_id=#{id}
+    </select>
+
+</mapper>

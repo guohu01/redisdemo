@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Retwis - Example Twitter clone based on the Redis Key-Value DB</title>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="page">
+    <div id="header">
+        <a href="/"><img style="border:none" src="../static/image/logo.png" width="192" height="85" alt="Retwis"></a>
+        <div id="navbar">
+            <a href="index.html">主页</a>
+            | <a href="timeline.html">热点</a>
+            | <a href="logout.html">退出</a>
+        </div>
+    </div>
+    <h2 class="username" th:text="${user.username}"></h2>
+    <a href="follow.html?focusuid=" th:href="@{/follow.html(focusuid=${user.id},f=${f})}" class="button">[[${fsbtnValue}]]</a>
+
+    <div class="post" th:each="postMsg:${postList}">
+        <a class="username" th:href="@{/profile.html(u=${user.id})}">[[${user.username}]]</a>
+        [[${postMsg.content}]]<br>
+        <i>[[${postMsg.createTime}]] 通过 web发布</i>
+    </div>
+
+    <!--<div class="post">
+        <a class="username" href="profile.html?u=2">test</a>
+        hello<br>
+        <i>22 分钟前 通过 web发布</i>
+    </div>-->
+
+    <div id="footer">redis版本的仿微博项目 <a href="http://redis.io">Redis key-value database</a></div>
+</div>
+</body>
+</html>
