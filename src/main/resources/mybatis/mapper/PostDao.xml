@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yoyo.redisdemo.dao.PostDao">
+    <insert id="insert">
+        insert into t_posts (content,create_time,user_id)
+        values (#{content},#{createTime},#{user.id})
+    </insert>
+
+    <select id="getPostByUid" resultType="cn.yoyo.redisdemo.model.Post">
+        select id,content,create_time,user_id from t_posts where user_id=#{id} order by create_time desc
+    </select>
+
+    <select id="getHomePost" resultMap="homePostResultMap">
+        select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+            and (p.user_id=#{id} or p.user_id in
+            (select uf.focus_user_id from t_users_focus uf where user_id=#{id}))
+        order by p.create_time desc
+    </select>
+    <resultMap id="homePostResultMap" type="cn.yoyo.redisdemo.model.Post">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+        <result column="user_id" property="user.id"/>
+        <result column="username" property="user.username"/>
+    </resultMap>
+
+    <select id="getNewestPosts" resultMap="homePostResultMap">
+        select p.id,p.content,p.create_time,p.user_id,u.username
+        from t_posts p,t_users u
+        where p.user_id=u.id
+        order by p.create_time desc limit 20
+    </select>
+
+</mapper>
